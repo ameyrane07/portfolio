@@ -1,0 +1,364 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #0b0b0b;
+    color: white;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* NAV - smaller height */
+nav {
+    position: sticky;
+    top: 0;
+    background: #1a1a1a;  /* black-cyan theme */
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 8%;
+    z-index: 1000;
+}
+
+.logo span {
+    color: #00ffff;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s;
+}
+
+nav ul li:hover {
+    color: #00ffff;
+}
+
+nav ul li::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #00ffff;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+nav ul li:hover::after {
+    width: 100%;
+}
+
+/* SECTION */
+section {
+    padding: 70px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* SECTION TITLES */
+section h2 {
+    font-size: 42px;
+    color: #00ffff;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* HERO */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hero h1 {
+    font-size: 72px;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 25px;
+}
+
+.hero span {
+    color: #00ffff;
+}
+
+.hero p {
+    margin-bottom: 25px;
+    color: #aaa;
+    max-width: 500px;
+}
+
+button {
+    padding: 12px 26px;
+    border: none;
+    border-radius: 6px;
+    background: #00ffff;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+button:hover,
+button:active {
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgba(0,255,255,0.3);
+}
+
+/* IMAGE */
+.image img {
+    width: 300px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.image img:hover {
+    transform: scale(1.03);
+}
+
+/* FLEX SECTIONS */
+.about-steps,
+.services-grid,
+.workflow-steps,
+.contact-steps {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.about-steps .step,
+.services-grid .service,
+.workflow-steps .step,
+.contact-steps .step {
+    background: #111;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 400px;
+    text-align: center;
+    transition: 0.25s;
+}
+
+.about-steps .step:hover,
+.services-grid .service:hover,
+.workflow-steps .step:hover,
+.contact-steps .step:hover,
+.about-steps .step:active,
+.services-grid .service:active,
+.workflow-steps .step:active,
+.contact-steps .step:active {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,255,255,0.15);
+}
+
+/* PORTFOLIO */
+.portfolio {
+    text-align: center;
+}
+
+/* FEATURED WORK */
+.choice-grid {
+    display: flex;
+    justify-content: center;
+    gap: 120px;
+    flex-wrap: wrap;
+}
+
+.choice {
+    height: 140px;
+    width: 220px;
+    background: linear-gradient(135deg, #00ffff, #00bfff);
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #00bfff;
+    transition: 0.3s;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: black;
+}
+
+.choice:hover,
+.choice:active {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0,255,255,0.3);
+    background: linear-gradient(135deg, #00bfff, #00ffff);
+}
+
+/* GRID */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.portfolio-grid .project:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 50%;
+}
+
+.project {
+    height: 220px;
+    background: #111;
+    border-radius: 12px;
+    position: relative;
+    transition: 0.25s;
+}
+
+.project:hover,
+.project:active {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,255,255,0.4);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.3s;
+}
+
+.project:hover .overlay,
+.project:active .overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* REVEAL */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========================= */
+/* 📱 MOBILE OPTIMIZATION (UPDATED ONLY) */
+/* ========================= */
+
+@media(max-width:768px) {
+
+    section {
+        padding: 60px 15px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        padding: 12px 5%;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+        gap: 10px;
+    }
+
+    nav ul li {
+        margin: 5px 10px;
+        font-size: 14px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding-left: 0 !important;
+    }
+
+    .hero .text {
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 15px;
+        max-width: 100%;
+    }
+
+    button {
+        width: 85%;
+        max-width: 260px;
+    }
+
+    .services-grid,
+    .workflow-steps,
+    .contact-steps {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .service,
+    .step {
+        width: 90%;
+        max-width: 340px;
+    }
+
+    .choice-grid {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .choice {
+        width: 90%;
+        max-width: 320px;
+        height: 120px;
+        margin: auto;
+        font-size: 1rem;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .project {
+        width: 90%;
+        max-width: 340px;
+        height: auto;
+        margin: auto;
+    }
+
+    .project video {
+        width: 100%;
+        height: auto;
+    }
+
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Short-form Content</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+.project video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    background-color: black;
+    cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<nav>
+    <h2 class="logo">My<span>Portfolio</span></h2>
+    <ul>
+        <li onclick="goToPage('index.html#portfolio')">Home</li>
+        <li onclick="goToPage('motion.html')">Motion</li>
+    </ul>
+</nav>
+
+<section>
+    <div class="container portfolio reveal">
+
+        <h2>Short-form Content</h2>
+
+        <div class="portfolio-grid">
+
+            <div class="project">
+                <video src="projects/short1.mp4" muted loop></video>
+                <div class="overlay"><p>Reel 1</p></div>
+            </div>
+
+            <div class="project">
+                <video src="projects/short2.mp4" muted loop></video>
+                <div class="overlay"><p>Reel 2</p></div>
+            </div>
+
+            <div class="project">
+                <video src="projects/short3.mp4" muted loop></video>
+                <div class="overlay"><p>Reel 3</p></div>
+            </div>
+
+            <div class="project">
+                <video src="projects/short4.mp4" muted loop></video>
+                <div class="overlay"><p>Reel 4</p></div>
+            </div>
+
+            <div class="project">
+                <video src="projects/short5.mp4" muted loop></video>
+                <div class="overlay"><p>Reel 5</p></div>
+            </div>
+
+        </div>
+
+        <button onclick="goToSection()">← Back to Home</button>
+
+    </div>
+</section>
+
+<script>
+// Hover preview
+document.querySelectorAll("video").forEach(video => {
+
+    video.addEventListener("mouseenter", () => {
+        video.muted = true;
+        video.play();
+    });
+
+    video.addEventListener("mouseleave", () => {
+        video.pause();
+        video.currentTime = 0;
+    });
+
+    // Click for restart + fullscreen + sound
+    video.addEventListener("click", () => {
+        video.currentTime = 0;
+        video.muted = false;
+        video.play();
+
+        if (video.requestFullscreen) {
+            video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) {
+            video.msRequestFullscreen();
+        }
+    });
+
+});
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
